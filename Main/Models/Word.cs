@@ -6,7 +6,7 @@ namespace Anagram.Models
   public class Word
   {
     private string _word;
-    private static List<String> _wordList = new List<String> {};
+    private static List<string> _wordList = new List<string> {};
 
     public Word()
     {
@@ -110,6 +110,19 @@ namespace Anagram.Models
       }
       Console.WriteLine("Two");
       return true;
+    }
+
+    public List<string> AnagramList()
+    {
+      List<string> returnList = new List<string>{};
+      foreach(string s in _wordList)
+      {
+        if(isAnagram(s))
+        {
+          returnList.Add(s);
+        }
+      }
+      return returnList;
     }
 
     //Testing Not Related to Specs

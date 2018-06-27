@@ -99,5 +99,17 @@ namespace Anagram.Tests
       List<String> list = new List<string> {"estt","stte","tttt"};
       Assert.AreEqual(false,wordOne.isAnagram(list[2]));
     }
+    [TestMethod]
+    public void Test_Anagram_List_True()
+    {
+      //Eventual Tests
+      Word wordOne = new Word("test");
+      List<String> list = new List<string> {"estt","stte","tttt"};
+      List<String> aList = new List<string> {"estt","stte"};
+      wordOne.SetList(list);
+      List<String> returnedList = wordOne.AnagramList();
+      Assert.AreEqual(aList[0],returnedList[0]);
+      Assert.AreEqual(aList.Count,returnedList.Count);
+    }
   }
 }
