@@ -48,6 +48,72 @@ namespace Anagram.Models
       return _wordList[i];
     }
 
+    public void SetList(List<String> list)
+    {
+      _wordList = list;
+    }
+
+    public List<String> GetList()
+    {
+      return _wordList;
+    }
+
+    //Obfuscated way
+    public bool isAnagramConfusing(string anagram)
+    {
+      bool same = true;
+      int[] charWord = new int[26];
+      int[] charAnagram = new int[26];
+      //char c = 'A';
+      //same = (((Convert.ToInt32(c))-65)==0);
+      foreach (char c in _word)
+      {
+        charWord[(((int)char.ToUpper(c))-65)]++;
+      }
+      foreach (char c in anagram)
+      {
+        charAnagram[(((int)char.ToUpper(c))-65)]++;
+      }
+      for(int i = 0; i< 26;i++)
+      {
+        if(charWord[i] != charAnagram[i])
+        {
+          same = false;
+          break;
+        }
+      }
+      return same;
+    }
+
+    public bool isAnagram(string anagram)
+    {
+      bool same = true;
+      char[] wordArray = (_word.ToLower()).ToCharArray();
+      char[] AnaArray = (anagram.ToLower()).ToCharArray();
+      Array.Sort<char>(wordArray);
+      Array.Sort<char>(AnaArray);
+      if(wordArray.Length==AnaArray.Length)
+      {
+        for(int i = 0; i<wordArray.Length;i++)
+        {
+          if(wordArray[i]!=AnaArray[i])
+          {
+            same = false;
+            break;
+          }
+        }
+      }
+      else
+      {
+        same = false;
+      }
+      return same;
+    }
+
+
+
+    //Testing Not Related to Specs
+
     public override bool Equals(Object o)
     {
       return false;
