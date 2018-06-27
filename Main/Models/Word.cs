@@ -61,56 +61,56 @@ namespace Anagram.Models
     //Obfuscated way
     public bool isAnagramConfusing(string anagram)
     {
-      bool same = true;
       int[] charWord = new int[26];
+      int countWord = 0;
       int[] charAnagram = new int[26];
-      //char c = 'A';
-      //same = (((Convert.ToInt32(c))-65)==0);
+      int countAna = 0;
       foreach (char c in _word)
       {
         charWord[(((int)char.ToUpper(c))-65)]++;
+        countWord++;
       }
       foreach (char c in anagram)
       {
         charAnagram[(((int)char.ToUpper(c))-65)]++;
+        countAna++;
+      }
+      if(countAna!=countWord)
+      {
+        return false;
       }
       for(int i = 0; i< 26;i++)
       {
         if(charWord[i] != charAnagram[i])
         {
-          same = false;
-          break;
+          return false;
         }
       }
-      return same;
+      return true;
     }
 
     public bool isAnagram(string anagram)
     {
-      bool same = true;
       char[] wordArray = (_word.ToLower()).ToCharArray();
       char[] AnaArray = (anagram.ToLower()).ToCharArray();
       Array.Sort<char>(wordArray);
       Array.Sort<char>(AnaArray);
-      if(wordArray.Length==AnaArray.Length)
+      if(wordArray.Length!=AnaArray.Length)
       {
-        for(int i = 0; i<wordArray.Length;i++)
+        Console.WriteLine("Three");
+        return false;
+      }
+      for(int i = 0; i<wordArray.Length;i++)
+      {
+        if(wordArray[i]!=AnaArray[i])
         {
-          if(wordArray[i]!=AnaArray[i])
-          {
-            same = false;
-            break;
-          }
+          Console.WriteLine("One");
+          return false;
         }
       }
-      else
-      {
-        same = false;
-      }
-      return same;
+      Console.WriteLine("Two");
+      return true;
     }
-
-
 
     //Testing Not Related to Specs
 

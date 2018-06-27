@@ -75,5 +75,29 @@ namespace Anagram.Tests
       List<String> list = new List<string> {"estt","stte","Three"};
       Assert.AreEqual(true,wordOne.isAnagram(list[0]));
     }
+    [TestMethod]
+    public void Test_Is_Anagram_True_2nd()
+    {
+      //Eventual Tests
+      Word wordOne = new Word("test");
+      List<String> list = new List<string> {"estt","stte","Three"};
+      Assert.AreEqual(true,wordOne.isAnagram(list[0]));
+    }
+    [TestMethod]
+    public void Test_Is_Anagram_False_1st()
+    {
+      //Eventual Tests
+      Word wordOne = new Word("test");
+      List<String> list = new List<string> {"estt","stte","Three"};
+      Assert.AreEqual(false,wordOne.isAnagram(list[2]));
+    }
+    [TestMethod]
+    public void Test_Is_Anagram_False_2nd()
+    {
+      //Eventual Tests
+      Word wordOne = new Word("test");
+      List<String> list = new List<string> {"estt","stte","tttt"};
+      Assert.AreEqual(false,wordOne.isAnagram(list[2]));
+    }
   }
 }
